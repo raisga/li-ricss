@@ -1,1 +1,1 @@
-# VocalTrainer
+# li-rics-composer
