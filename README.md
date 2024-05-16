@@ -51,8 +51,6 @@ brew install poetry
 poetry install
 ```
 
-The currently activated Python version 3.12.3 is not supported by the project (^3.11,<3.12).
-Trying to find and use a compatible version.
 Using python3.11 (3.11.7)
 
 #### Generate the Index for the first time
