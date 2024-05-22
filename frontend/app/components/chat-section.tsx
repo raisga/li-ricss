@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useMemo } from "react";
+import { ChangeEvent, useMemo } from "react";
 import { insertDataIntoMessages } from "./transform";
 import { ChatInput, ChatMessages } from "./ui/chat";
 import Status from "./status";
@@ -27,6 +27,11 @@ export default function ChatSection() {
     return insertDataIntoMessages(messages, data);
   }, [messages, data]);
 
+  const handleSelectorChange = (optionsValues: string[]) => {
+    const e = { target: { value: optionsValues.join(', ') } } as ChangeEvent<HTMLInputElement>;
+    handleInputChange(e);
+  };
+
   return (
     <div className="flex gap-4 justify-center w-[90vw]">
       <div className="space-y-4 max-w-5xl w-full">
@@ -39,7 +44,7 @@ export default function ChatSection() {
         <ChatInput
           input={input}
           handleSubmit={handleSubmit}
-          handleInputChange={handleInputChange}
+          handleSelectorChange={handleSelectorChange}
           isLoading={isLoading}
           multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}
         />
