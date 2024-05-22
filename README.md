@@ -2,6 +2,8 @@
 
 (L)lama(I)ndex as a (R)hythmic (I)nsightful (C)reative (S)emantic (S)ystem
 
+Explore the enchanting world of mesmerizing poetry and song lyrics, a pioneering project that generates such content. Dive into a symphony of words, where each creation resonates with unique rhythm and profound meaning.
+
 Based on the [rag-stream-intermediate-events-tutorial](
 https://github.com/rsrohan99/rag-stream-intermediate-events-tutorial)
 
