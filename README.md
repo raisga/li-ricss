@@ -9,9 +9,15 @@ https://github.com/rsrohan99/rag-stream-intermediate-events-tutorial)
 
 We use Server-Sent Events which will be recieved by Vercel AI SDK on the frontend.
 
+## Requirements
+
+- python3.11 (3.11.7)
+- node 21 (21.7.3)
+- npm 10 (10.5.0)
+
 ## Getting Started
 
-First clone the repo:
+- Clone the repo:
 
 ```bash
 git clone git@github.com:raisga/li-ricss.git
@@ -21,27 +27,19 @@ cd li-ricss
 
 ### Backend
 
-`cd` into the `backend` directory
+- `cd` into the `backend` directory
 
 ```bash
 cd backend
 ```
 
-#### First create `.env` from `.env.example`
+- Create `.env` from `.env.example`
 
 ```bash
 cp .env.example .env
 ```
 
-#### Set the OpenAI key in .env
-
-! TODO: Replace OpenAI API Key with local LLM
-
-```bash
-OPENAI_API_KEY=****
-```
-
-#### Install the dependencies
+- Install the dependencies
 
 For mac users
 
@@ -52,16 +50,13 @@ brew install poetry
 ```bash
 poetry install
 ```
-
-Using python3.11 (3.11.7)
-
-#### Generate the Index for the first time
+- Generate the Index for the first time
 
 ```bash
 poetry run python app/engine/generate.py
 ```
 
-#### Start the backend server
+- Start the backend server
 
 ```bash
 poetry run python main.py
@@ -69,25 +64,25 @@ poetry run python main.py
 
 ### Frontend
 
-`cd` into the `frontend` directory
+- `cd` into the `frontend` directory
 
 ```bash
 cd frontend
 ```
 
-#### First create `.env` from `.env.example`
+- Create `.env` from `.env.example`
 
 ```bash
 cp .env.example .env
 ```
 
-#### Install the dependencies
+- Install the dependencies
 
 ```bash
 npm i
 ```
 
-#### Start the frontend server
+- Start the frontend server
 
 ```bash
 npm run dev
