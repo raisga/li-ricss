@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { MultiValue } from "react-select";
-import { Button } from "../button";
-import FileUploader from "../file-uploader";
-import UploadImagePreview from "../upload-image-preview";
-import { ChatHandler } from "../../../@interfaces/chat-handler";
-import ChatSelector from "../selector";
+import { Button } from "./button";
+import FileUploader from "./file-uploader";
+import UploadImagePreview from "./upload-image-preview";
+import { ChatHandler } from "../@interfaces/chat-handler";
+import ChatSelector from "./selector";
 
 function ChatInput(
   props: Pick<

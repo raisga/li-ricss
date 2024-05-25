@@ -2,7 +2,7 @@
 
 import { useChat } from "ai/react";
 import { ChangeEvent, useMemo } from "react";
-import { insertDataIntoMessages } from "../lib/chat-transform";
+import { insertDataIntoMessages } from "../lib/utils";
 import { ChatInput, ChatMessages } from "./chat-handler";
 import Status from "./status";
 
