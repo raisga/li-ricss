@@ -2,8 +2,8 @@
 
 import { useChat } from "ai/react";
 import { ChangeEvent, useMemo } from "react";
-import { insertDataIntoMessages } from "./transform";
-import { ChatInput, ChatMessages } from "./ui/chat";
+import { insertDataIntoMessages } from "../lib/chat-transform";
+import { ChatInput, ChatMessages } from "./chat-handler";
 import Status from "./status";
 
 export default function ChatSection() {

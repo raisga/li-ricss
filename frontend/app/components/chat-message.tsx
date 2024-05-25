@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "../button";
 import ChatAvatar from "./chat-avatar";
 import Markdown from "./markdown";
-import { useCopyToClipboard } from "./use-copy-to-clipboard";
+import { useCopyToClipboard } from "../../../hooks/use-copy-to-clipboard";
 
 interface ChatMessageImageData {
   type: "image_url";
