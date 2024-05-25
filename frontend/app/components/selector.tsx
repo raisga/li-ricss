@@ -9,7 +9,7 @@ export type Props = {
   placeholder?: string;
 }
 
-export function Selector({ onChange, options, placeholder = 'Select themes regarding the lyrics...' }: Props) {
+export function Selector({ onChange, options, placeholder}: Props) {
   return (
     <div className="flex-1">
       <Select
@@ -25,3 +25,4 @@ export function Selector({ onChange, options, placeholder = 'Select themes regar
   )
 }
 
+export default Selector;

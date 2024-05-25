@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Button } from "./button";
-import FileUploader from "./file-uploader";
-import UploadImagePreview from "./upload-image-preview";
-import { ChatHandler } from "../@interfaces/chat-handler";
-import { Selector } from "./selector";
-import { Input } from "./input";
+import { Button } from "../button";
+import FileUploader from "../file-uploader";
+import UploadImagePreview from "../upload-image-preview";
+import { ChatHandler } from "../../@interfaces/chat-handler";
+import { Selector } from "../selector";
+import { Input } from "../input";
 import { MultiValue } from "react-select";
 
 function ChatInput(
@@ -82,7 +82,8 @@ function ChatInput(
   const disabled = false; // !(selectedOptions.length > 0)
   const allowedExtensions = ['pdf', 'txt', 'md'];
   const buttonLabel = '📝 Generate';
-  const placholderInput = "Type a section to correct";
+  const placeholderInput = "Type a section to correct";
+  const placeholderSelector = 'Select themes regarding the lyrics...';
   
   return (
     <form
@@ -95,7 +96,11 @@ function ChatInput(
       <div className="flex w-full items-start justify-between gap-4 ">
         {isFirstMessage && (
           <>
-            <Selector onChange={handleOnChange} options={defaultOptions} />
+            <Selector
+              onChange={handleOnChange}
+              options={defaultOptions}
+              placeholder={placeholderSelector}
+            />
             <FileUploader
               config={{
                 allowedExtensions,
@@ -112,7 +117,7 @@ function ChatInput(
           <Input
             autoFocus
             name="message"
-            placeholder={placholderInput}
+            placeholder={placeholderInput}
             className="flex-1"
             value={props.input}
             onChange={props.handleInputChange}

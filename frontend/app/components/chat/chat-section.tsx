@@ -2,10 +2,10 @@
 
 import { useChat } from "ai/react";
 import { ChangeEvent, useMemo } from "react";
-import { insertDataIntoMessages } from "../lib/utils";
+import { insertDataIntoMessages } from "../../lib/utils";
 import ChatInput from "./chat-input";
 import ChatMessages from "./chat-messages";
-import Status, { EventData } from "./status";
+import Status, { EventData } from "../status";
 
 export default function ChatSection() {
   const {

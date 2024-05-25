@@ -2,10 +2,10 @@ import { Check, Copy } from "lucide-react";
 
 import { JSONValue, Message } from "ai";
 import Image from "next/image";
-import { Button } from "./button";
+import { Button } from "../button";
 import ChatAvatar from "./chat-avatar";
-import Markdown from "./markdown";
-import { useCopyToClipboard } from "../hooks/use-copy-to-clipboard";
+import Markdown from "../markdown";
+import { useCopyToClipboard } from "../../hooks/use-copy-to-clipboard";
 
 interface ChatMessageImageData {
   type: "image_url";
