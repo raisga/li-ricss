@@ -5,17 +5,11 @@ export type Props = {
     options: MultiValue<{ value: string; label: string; }>, 
     actionMeta?: ActionMeta<{ value: string; label: string; }>
   ) => void;
-  options?: { value: string; label: string; }[];
+  options: { value: string; label: string; }[];
   placeholder?: string;
 }
 
-const defaultOptions = [
-  { value: 'time', label: 'Time' },
-  { value: 'nostalgia', label: 'Nostalgia' },
-  { value: 'moments', label: 'Moments' },
-];
-
-function Selector({ onChange, options = defaultOptions, placeholder = 'Select themes regarding the lyrics...' }: Props) {
+export function Selector({ onChange, options, placeholder = 'Select themes regarding the lyrics...' }: Props) {
   return (
     <div className="flex-1">
       <Select
@@ -31,4 +25,3 @@ function Selector({ onChange, options = defaultOptions, placeholder = 'Select th
   )
 }
 
-export default Selector;

@@ -3,8 +3,9 @@
 import { useChat } from "ai/react";
 import { ChangeEvent, useMemo } from "react";
 import { insertDataIntoMessages } from "../lib/utils";
-import { ChatInput, ChatMessages } from "./chat-handler";
-import Status from "./status";
+import ChatInput from "./chat-input";
+import ChatMessages from "./chat-messages";
+import Status, { EventData } from "./status";
 
 export default function ChatSection() {
   const {
@@ -43,13 +44,14 @@ export default function ChatSection() {
         />
         <ChatInput
           input={input}
-          handleSubmit={handleSubmit}
-          handleSelectorChange={handleSelectorChange}
           isLoading={isLoading}
+          handleSubmit={handleSubmit}
+          handleInputChange={handleInputChange}
+          handleSelectorChange={handleSelectorChange}
           multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}
         />
       </div>
-      <Status data={data} />
+      <Status data={data as unknown as EventData[]} />
     </div>
   );
 }
