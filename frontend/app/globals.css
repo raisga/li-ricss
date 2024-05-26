@@ -82,13 +82,26 @@
   }
   .background-gradient {
     background-color: #fff;
-    background-image: radial-gradient(
+    background-image: 
+      radial-gradient(
         at 21% 11%,
         rgba(52, 111, 221, 0.845) 0,
         transparent 50%
       ),
-      radial-gradient(at 85% 0, hsla(222, 57%, 78%, 0.52) 0, transparent 50%),
-      radial-gradient(at 91% 36%, rgba(202, 194, 255, 0.718) 0, transparent 50%),
-      radial-gradient(at 8% 40%, rgba(251, 232, 218, 0.46) 0, transparent 50%);
+      radial-gradient(
+        at 85% 0,
+        rgba(191, 204, 229, 0.52) 0,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 91% 36%,
+        rgba(94, 182, 214, 0.718) 0,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 8% 40%,
+        rgba(158, 132, 106, 0.46) 0,
+        transparent 50%
+      );
   }
 }
