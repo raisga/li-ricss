@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../button";
 import FileUploader from "../file-uploader";
 import UploadImagePreview from "../upload-image-preview";
-import { ChatHandler } from "../../@interfaces/chat-handler";
+import { ChatHandler } from "../../interfaces/chat-handler";
 import { Selector } from "../selector";
 import { Input } from "../input";
 import { MultiValue } from "react-select";

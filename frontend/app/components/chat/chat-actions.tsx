@@ -1,28 +1,36 @@
 import { PauseCircle, RefreshCw } from "lucide-react";
-
 import { Button } from "../button";
-import { ChatHandler } from "../../@interfaces/chat-handler";
+import { ChatHandler } from "@/app/interfaces/chat-handler";
 
-export default function ChatActions(
-  props: Pick<ChatHandler, "stop" | "reload"> & {
-    showReload?: boolean;
-    showStop?: boolean;
-  },
-) {
+export type Props = 
+  Pick<ChatHandler, "stop" | "reload"> 
+  & { showReload?: boolean; showStop?: boolean; }
+
+function ChatActions({ stop, reload, showStop, showReload }: Props) {
+  const actions = [
+    {
+      isVisible: showStop,
+      onClick: stop,
+      label: 'Stop generating',
+      icon: <PauseCircle className="mr-2 h-4 w-4" />,
+    },
+    {
+      isVisible: showReload,
+      onClick: reload,
+      label: 'Stop generating',
+      icon: <PauseCircle className="mr-2 h-4 w-4" />,
+    }
+  ];
   return (
     <div className="space-x-4">
-      {props.showStop && (
-        <Button variant="outline" size="sm" onClick={props.stop}>
-          <PauseCircle className="mr-2 h-4 w-4" />
-          Stop generating
+      {actions.map(({ isVisible, onClick, label, icon }) => isVisible ? (
+        <Button variant="outline" size="sm" onClick={onClick}>
+          {icon}
+          {label}
         </Button>
-      )}
-      {props.showReload && (
-        <Button variant="outline" size="sm" onClick={props.reload}>
-          <RefreshCw className="mr-2 h-4 w-4" />
-          Regenerate
-        </Button>
-      )}
+      ) : <></>)}
     </div>
   );
 }
+
+export default ChatActions;
