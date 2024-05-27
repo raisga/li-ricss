@@ -32,6 +32,7 @@ function ChatInput(
       setImageUrl(null);
       return;
     }
+    console.log({ e });
     props.handleSubmit(e);
     setIsFirstMessage(false);
   };
@@ -65,15 +66,6 @@ function ChatInput(
   }
 
   const defaultOptions = [
-    { value: 'time', label: 'Time' },
-    { value: 'nostalgia', label: 'Nostalgia' },
-    { value: 'moments', label: 'Moments' },
-    { value: 'time', label: 'Time' },
-    { value: 'nostalgia', label: 'Nostalgia' },
-    { value: 'moments', label: 'Moments' },
-    { value: 'time', label: 'Time' },
-    { value: 'nostalgia', label: 'Nostalgia' },
-    { value: 'moments', label: 'Moments' },
     { value: 'time', label: 'Time' },
     { value: 'nostalgia', label: 'Nostalgia' },
     { value: 'moments', label: 'Moments' },

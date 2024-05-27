@@ -131,6 +131,9 @@ async def chat(
     # query chat engine
     response = await chat_engine.astream_chat(lastMessage.content, messages)
 
+    print(data)
+    print(response)
+
     # stream response
     async def event_generator():
         while True:

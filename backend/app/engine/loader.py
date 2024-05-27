@@ -1,7 +1,5 @@
 from llama_index.core.readers import SimpleDirectoryReader
-
-DATA_DIR = "data"  # directory containing the documents
-
+from app.engine.constants import DATA_DIR
 
 def get_documents():
     return SimpleDirectoryReader(DATA_DIR).load_data()
