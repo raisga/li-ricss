@@ -7,20 +7,17 @@ import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import { Button } from "./button";
 import { useCopyToClipboard } from "../hooks/use-copy-to-clipboard";
+import { ILanguageMap } from "../lib/interfaces";
 
 // TODO: Remove this when @type/react-syntax-highlighter is updated
 const SyntaxHighlighter = Prism as unknown as FC<SyntaxHighlighterProps>;
 
-interface Props {
+export type Props = {
   language: string;
   value: string;
 }
 
-interface languageMap {
-  [key: string]: string | undefined;
-}
-
-export const programmingLanguages: languageMap = {
+export const programmingLanguages: ILanguageMap = {
   javascript: ".js",
   python: ".py",
   java: ".java",

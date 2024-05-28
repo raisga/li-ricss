@@ -3,10 +3,10 @@ import { useEffect, useRef } from "react";
 
 import ChatActions from "./chat-actions";
 import ChatMessage from "./chat-message";
-import { ChatHandler } from "../../interfaces/chat-handler";
+import { IChatHandler } from "../../lib/interfaces";
 
 export default function ChatMessages(
-  props: Pick<ChatHandler, "messages" | "isLoading" | "reload" | "stop">,
+  props: Pick<IChatHandler, "messages" | "isLoading" | "reload" | "stop">,
 ) {
   const scrollableChatContainerRef = useRef<HTMLDivElement>(null);
   const messageLength = props.messages.length;

@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Button } from "../button";
 import FileUploader from "../file-uploader";
 import UploadImagePreview from "../upload-image-preview";
-import { ChatHandler } from "../../interfaces/chat-handler";
+import { IChatHandler } from "../../lib/interfaces";
 import { Selector } from "../selector";
 import { Input } from "../input";
 import { MultiValue } from "react-select";
 
 function ChatInput(
   props: Pick<
-    ChatHandler,
+    IChatHandler,
     | "isLoading"
     | "input"
     | "onFileUpload"

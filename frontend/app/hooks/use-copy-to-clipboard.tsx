@@ -2,13 +2,13 @@
 
 import * as React from "react";
 
-export interface useCopyToClipboardProps {
+export type Props = {
   timeout?: number;
 }
 
 export function useCopyToClipboard({
   timeout = 2000,
-}: useCopyToClipboardProps) {
+}: Props) {
   const [isCopied, setIsCopied] = React.useState<Boolean>(false);
 
   const copyToClipboard = (value: string) => {

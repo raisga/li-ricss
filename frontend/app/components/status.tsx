@@ -1,12 +1,8 @@
 import { Loader2, CheckCircle } from "lucide-react";
-
-export interface EventData {
-  status: string;
-  message: string;
-}
+import { IEventData } from "../lib/interfaces";
 
 export type Props = {
-  data?: EventData[];
+  data?: IEventData[];
 }
 
 export function Status({ data }: Props) {

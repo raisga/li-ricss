@@ -5,17 +5,11 @@ import { Button } from "../button";
 import ChatAvatar from "./chat-avatar";
 import Markdown from "../markdown";
 import { useCopyToClipboard } from "../../hooks/use-copy-to-clipboard";
-
-interface ChatMessageImageData {
-  type: "image_url";
-  image_url: {
-    url: string;
-  };
-}
+import { IChatMessageImageData } from "@/app/interfaces/chat-handler";
 
 // This component will parse message data and render the appropriate UI.
 function ChatMessageData({ messageData }: { messageData: JSONValue }) {
-  const { image_url, type } = messageData as unknown as ChatMessageImageData;
+  const { image_url, type } = messageData as unknown as IChatMessageImageData;
   if (type === "image_url") {
     return (
       <div className="rounded-md max-w-[200px] shadow-md">

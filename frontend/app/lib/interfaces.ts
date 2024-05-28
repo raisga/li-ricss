@@ -1,6 +1,6 @@
 import { Message } from "ai";
 
-export interface ChatHandler {
+export interface IChatHandler {
   messages: Message[];
   input: string;
   isLoading: boolean;
@@ -16,4 +16,20 @@ export interface ChatHandler {
   stop?: () => void;
   onFileUpload?: (file: File) => Promise<void>;
   onFileError?: (errMsg: string) => void;
+}
+
+export interface IChatMessageImageData {
+  type: "image_url";
+  image_url: {
+    url: string;
+  };
+}
+
+export interface ILanguageMap {
+  [key: string]: string | undefined;
+}
+
+export interface IEventData {
+  status: string;
+  message: string;
 }
