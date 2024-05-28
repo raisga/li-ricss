@@ -37,8 +37,6 @@ def init_settings():
     llm_configs = llm_config_from_env()
     embedding_configs = embedding_config_from_env()
 
-    # Settings.llm = OpenAI(**llm_configs)
-    # Settings.embed_model = OpenAIEmbedding(**embedding_configs)
     Settings.llm = Ollama(**llm_configs)
     Settings.embed_model = resolve_embed_model(HuggingFaceEmbedding(**embedding_configs))
     Settings.chunk_size = int(os.getenv("CHUNK_SIZE", "1024"))

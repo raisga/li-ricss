@@ -1,5 +1,6 @@
 import json
 import time
+import os
 from queue import Queue
 from typing import List
 from llama_index.core.instrumentation.events.base import BaseEvent
@@ -107,6 +108,7 @@ async def chat(
     data: _ChatData,
     chat_engine: BaseChatEngine = Depends(get_chat_engine),
 ):
+    print(data)
     # check preconditions and get last message
     if len(data.messages) == 0:
         raise HTTPException(
@@ -130,9 +132,6 @@ async def chat(
 
     # query chat engine
     response = await chat_engine.astream_chat(lastMessage.content, messages)
-
-    print(data)
-    print(response)
 
     # stream response
     async def event_generator():

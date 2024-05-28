@@ -8,6 +8,7 @@ import ChatMessages from "./chat-messages";
 import Status, { EventData } from "../status";
 
 export default function ChatSection() {
+  const api = `${process.env.BASEURL_API}${process.env.CHAT_ENDPOINT}`
   const {
     messages,
     input,

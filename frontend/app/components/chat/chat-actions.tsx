@@ -17,14 +17,14 @@ function ChatActions({ stop, reload, showStop, showReload }: Props) {
     {
       isVisible: showReload,
       onClick: reload,
-      label: 'Stop generating',
-      icon: <PauseCircle className="mr-2 h-4 w-4" />,
+      label: 'Regenerate',
+      icon: <RefreshCw className="mr-2 h-4 w-4" />,
     }
   ];
   return (
     <div className="space-x-4">
       {actions.map(({ isVisible, onClick, label, icon }) => isVisible ? (
-        <Button variant="outline" size="sm" onClick={onClick}>
+        <Button key={`chat-action_${label}`} variant="outline" size="sm" onClick={onClick}>
           {icon}
           {label}
         </Button>

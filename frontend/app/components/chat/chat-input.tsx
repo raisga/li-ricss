@@ -97,8 +97,6 @@ function ChatInput(
               config={{
                 allowedExtensions,
                 disabled,
-                // TODO:
-                // fileSizeLimit: 20MB
               }}
               onFileUpload={handleUploadFile}
               onFileError={props.onFileError}

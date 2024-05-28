@@ -3,8 +3,8 @@ from app.engine.index import get_index
 
 
 def get_chat_engine():
-    system_prompt = os.getenv("SYSTEM_PROMPT")
     top_k = os.getenv("TOP_K", 3)
+    system_prompt=os.getenv("CHAT_PROMPT")
 
     return get_index().as_chat_engine(
         similarity_top_k=int(top_k),
