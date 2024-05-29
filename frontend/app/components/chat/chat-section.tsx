@@ -1,14 +1,16 @@
 "use client";
 
-import { useChat } from "ai/react";
+import { Message, useChat } from "ai/react";
 import { ChangeEvent, useMemo } from "react";
 import { insertDataIntoMessages } from "../../lib/utils";
 import ChatInput from "./chat-input";
 import ChatMessages from "./chat-messages";
-import Status, { EventData } from "../status";
+import Status from "../status";
+import { IEventData } from "@/app/lib/interfaces";
+
+// const getChatApi = (msgs: Message[]) => console.log({ msgs }) || `${process.env.BASEURL_API}${msgs.length > 0 ? process.env.CHAT_ENDPOINT : process.env.NEW_ENDPOINT}`;
 
 export default function ChatSection() {
-  const api = `${process.env.BASEURL_API}${process.env.CHAT_ENDPOINT}`
   const {
     messages,
     input,
@@ -19,7 +21,8 @@ export default function ChatSection() {
     stop,
     data,
   } = useChat({
-    api: process.env.NEXT_PUBLIC_CHAT_API,
+    api: `${process.env.NEXT_BASEURL_API}${process.env.NEXT_CHAT_ENDPOINT}`,
+    // process.env.NEXT_PUBLIC_CHAT_API,
     headers: {
       "Content-Type": "application/json", // using JSON because of vercel/ai 2.2.26
     },
@@ -46,13 +49,14 @@ export default function ChatSection() {
         <ChatInput
           input={input}
           isLoading={isLoading}
+          messages={messages}
           handleSubmit={handleSubmit}
           handleInputChange={handleInputChange}
           handleSelectorChange={handleSelectorChange}
-          multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}
+          multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}  
         />
       </div>
-      <Status data={data as unknown as EventData[]} />
+      <Status data={data as unknown as IEventData[]} />
     </div>
   );
 }

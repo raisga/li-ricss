@@ -6,6 +6,7 @@ import { IChatHandler } from "../../lib/interfaces";
 import { Selector } from "../selector";
 import { Input } from "../input";
 import { MultiValue } from "react-select";
+import { Message } from "ai/react";
 
 function ChatInput(
   props: Pick<
@@ -19,10 +20,10 @@ function ChatInput(
     | "handleSelectorChange"
   > & {
     multiModal?: boolean;
+    messages?: Message[];
   },
 ) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [isFirstMessage, setIsFirstMessage] = useState<boolean>(true)
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (imageUrl) {
@@ -32,9 +33,7 @@ function ChatInput(
       setImageUrl(null);
       return;
     }
-    console.log({ e });
     props.handleSubmit(e);
-    setIsFirstMessage(false);
   };
 
   const onRemovePreviewImage = () => setImageUrl(null);
@@ -86,7 +85,7 @@ function ChatInput(
         <UploadImagePreview url={imageUrl} onRemove={onRemovePreviewImage} />
       )}
       <div className="flex w-full items-start justify-between gap-4 ">
-        {isFirstMessage && (
+        {props.messages?.length === 0 && (
           <>
             <Selector
               onChange={handleOnChange}
@@ -103,7 +102,7 @@ function ChatInput(
             />
           </>
         )}
-        {!isFirstMessage && (
+        {props.messages && props.messages?.length > 0 && (
           <Input
             autoFocus
             name="message"
