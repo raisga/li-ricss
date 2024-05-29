@@ -27,9 +27,9 @@ from llama_index.core.instrumentation.events.chat_engine import (
     StreamChatEndEvent
 )
 from llama_index.core.utilities.token_counting import TokenCounter
-from app.engine import get_chat_engine
+from app.engine import get_new_engine
 
-chat_router = r = APIRouter()
+new_router = r = APIRouter()
 
 dispatcher = get_dispatcher()
 
@@ -103,10 +103,10 @@ stream_part_types = {
 }
 
 @r.post("")
-async def chat(
+async def new(
     request: Request,
     data: _ChatData,
-    chat_engine: BaseChatEngine = Depends(get_chat_engine),
+    chat_engine: BaseChatEngine = Depends(get_new_engine),
 ):
     # check preconditions and get last message
     if len(data.messages) == 0:

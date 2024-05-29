@@ -20,7 +20,7 @@ function ChatInput(
     | "handleSelectorChange"
   > & {
     multiModal?: boolean;
-    messages?: Message[];
+    stage?: 'new' | 'chat';
   },
 ) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -85,7 +85,7 @@ function ChatInput(
         <UploadImagePreview url={imageUrl} onRemove={onRemovePreviewImage} />
       )}
       <div className="flex w-full items-start justify-between gap-4 ">
-        {props.messages?.length === 0 && (
+        {props.stage === 'new' && (
           <>
             <Selector
               onChange={handleOnChange}
@@ -102,7 +102,7 @@ function ChatInput(
             />
           </>
         )}
-        {props.messages && props.messages?.length > 0 && (
+        {props.stage === 'chat' && (
           <Input
             autoFocus
             name="message"

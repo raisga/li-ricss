@@ -1,16 +1,17 @@
 "use client";
 
-import { Message, useChat } from "ai/react";
-import { ChangeEvent, useMemo } from "react";
+import { useChat } from "ai/react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { insertDataIntoMessages } from "../../lib/utils";
 import ChatInput from "./chat-input";
 import ChatMessages from "./chat-messages";
 import Status from "../status";
 import { IEventData } from "@/app/lib/interfaces";
 
-// const getChatApi = (msgs: Message[]) => console.log({ msgs }) || `${process.env.BASEURL_API}${msgs.length > 0 ? process.env.CHAT_ENDPOINT : process.env.NEW_ENDPOINT}`;
+const apiUrl = process.env.NEXT_BASEURL_API || 'http://localhost:8000/api/';
 
 export default function ChatSection() {
+  const [stage, setStage] = useState<'new' | 'chat'>('new');
   const {
     messages,
     input,
@@ -21,12 +22,19 @@ export default function ChatSection() {
     stop,
     data,
   } = useChat({
-    api: `${process.env.NEXT_BASEURL_API}${process.env.NEXT_CHAT_ENDPOINT}`,
-    // process.env.NEXT_PUBLIC_CHAT_API,
+    // api: process.env.NEXT_PUBLIC_CHAT_API,
+    // api: `${process.env.NEXT_BASEURL_API}${process.env.NEXT_CHAT_ENDPOINT}`,
+    api: `${apiUrl}${stage}`,
     headers: {
       "Content-Type": "application/json", // using JSON because of vercel/ai 2.2.26
     },
   });
+
+  useEffect(() => {
+    if (stage !== 'chat' && messages.length > 0) {
+      setStage('chat');
+    }
+  }, [messages, stage]);
 
   const transformedMessages = useMemo(() => {
     return insertDataIntoMessages(messages, data);
@@ -49,7 +57,7 @@ export default function ChatSection() {
         <ChatInput
           input={input}
           isLoading={isLoading}
-          messages={messages}
+          stage={stage}
           handleSubmit={handleSubmit}
           handleInputChange={handleInputChange}
           handleSelectorChange={handleSelectorChange}

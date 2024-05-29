@@ -1,9 +1,9 @@
 import { PauseCircle, RefreshCw } from "lucide-react";
 import { Button } from "../button";
-import { ChatHandler } from "@/app/interfaces/chat-handler";
+import { IChatHandler } from "@/app/lib/interfaces";
 
 export type Props = 
-  Pick<ChatHandler, "stop" | "reload"> 
+  Pick<IChatHandler, "stop" | "reload"> 
   & { showReload?: boolean; showStop?: boolean; }
 
 function ChatActions({ stop, reload, showStop, showReload }: Props) {
@@ -28,7 +28,7 @@ function ChatActions({ stop, reload, showStop, showReload }: Props) {
           {icon}
           {label}
         </Button>
-      ) : <></>)}
+      ) : null)}
     </div>
   );
 }
