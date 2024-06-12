@@ -85,22 +85,22 @@
     background-image: 
       radial-gradient(
         at 21% 11%,
-        rgba(52, 111, 221, 0.845) 0,
+        #66b2ff,
         transparent 50%
       ),
       radial-gradient(
         at 85% 0,
-        rgba(191, 204, 229, 0.52) 0,
+        #119be8,
         transparent 50%
       ),
       radial-gradient(
         at 91% 36%,
-        rgba(94, 182, 214, 0.718) 0,
+        #1276e4,
         transparent 50%
       ),
       radial-gradient(
         at 8% 40%,
-        rgba(158, 132, 106, 0.46) 0,
+        #1276e4,
         transparent 50%
       );
   }

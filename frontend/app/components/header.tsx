@@ -17,7 +17,7 @@ function Header({ title }: Props) {
           href="https://www.raisga.com/"
           className="flex items-center justify-center font-nunito text-lg font-bold gap-2"
         >
-          <span>LI-RICSS</span>
+          <span style={{ whiteSpace: "nowrap" }}>LI-RICSS</span>
           <Image
             className="rounded-xl"
             src="/logo-sample.png"
