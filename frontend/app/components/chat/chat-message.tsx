@@ -5,7 +5,7 @@ import { Button } from "../button";
 import ChatAvatar from "./chat-avatar";
 import Markdown from "../markdown";
 import { useCopyToClipboard } from "../../hooks/use-copy-to-clipboard";
-import { IChatMessageImageData } from "@/app/interfaces/chat-handler";
+import { IChatMessageImageData } from "@/app/lib/interfaces";
 
 // This component will parse message data and render the appropriate UI.
 function ChatMessageData({ messageData }: { messageData: JSONValue }) {

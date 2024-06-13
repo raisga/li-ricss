@@ -1,12 +1,10 @@
 import { useState } from "react";
+import { MultiValue } from "react-select";
 import { Button } from "../button";
 import FileUploader from "../file-uploader";
 import UploadImagePreview from "../upload-image-preview";
 import { IChatHandler } from "../../lib/interfaces";
 import { Selector } from "../selector";
-import { Input } from "../input";
-import { MultiValue } from "react-select";
-import { Message } from "ai/react";
 
 function ChatInput(
   props: Pick<
@@ -72,8 +70,7 @@ function ChatInput(
 
   const disabled = false; // !(selectedOptions.length > 0)
   const allowedExtensions = ['pdf', 'txt', 'md'];
-  const buttonLabel = '📝 Generate';
-  const placeholderInput = "Type a section to correct";
+  const buttonLabel = '📝 Generate Lyrics';
   const placeholderSelector = 'Select themes regarding the lyrics...';
   
   return (
@@ -85,33 +82,19 @@ function ChatInput(
         <UploadImagePreview url={imageUrl} onRemove={onRemovePreviewImage} />
       )}
       <div className="flex w-full items-start justify-between gap-4 ">
-        {props.stage === 'new' && (
-          <>
-            <Selector
-              onChange={handleOnChange}
-              options={defaultOptions}
-              placeholder={placeholderSelector}
-            />
-            <FileUploader
-              config={{
-                allowedExtensions,
-                disabled,
-              }}
-              onFileUpload={handleUploadFile}
-              onFileError={props.onFileError}
-            />
-          </>
-        )}
-        {props.stage === 'chat' && (
-          <Input
-            autoFocus
-            name="message"
-            placeholder={placeholderInput}
-            className="flex-1"
-            value={props.input}
-            onChange={props.handleInputChange}
-          />
-        )}
+        <Selector
+          onChange={handleOnChange}
+          options={defaultOptions}
+          placeholder={placeholderSelector}
+        />
+        <FileUploader
+          config={{
+            allowedExtensions,
+            disabled,
+          }}
+          onFileUpload={handleUploadFile}
+          onFileError={props.onFileError}
+        />
         <Button type="submit" disabled={props.isLoading}>
           {buttonLabel}
         </Button>

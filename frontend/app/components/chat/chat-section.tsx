@@ -48,21 +48,25 @@ export default function ChatSection() {
   return (
     <div className="flex gap-4 justify-center w-[90vw]">
       <div className="space-y-4 max-w-5xl w-full">
-        <ChatMessages
-          messages={transformedMessages}
-          isLoading={isLoading}
-          reload={reload}
-          stop={stop}
-        />
-        <ChatInput
-          input={input}
-          isLoading={isLoading}
-          stage={stage}
-          handleSubmit={handleSubmit}
-          handleInputChange={handleInputChange}
-          handleSelectorChange={handleSelectorChange}
-          multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}  
-        />
+        {transformedMessages?.length > 0 && (
+          <ChatMessages
+            messages={transformedMessages}
+            isLoading={isLoading}
+            reload={reload}
+            stop={stop}
+          />
+        )}
+        {transformedMessages?.length === 0 && (
+          <ChatInput
+            input={input}
+            isLoading={isLoading}
+            stage={stage}
+            handleSubmit={handleSubmit}
+            handleInputChange={handleInputChange}
+            handleSelectorChange={handleSelectorChange}
+            multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}  
+          />
+        )}
       </div>
       <Status data={data as unknown as IEventData[]} />
     </div>
