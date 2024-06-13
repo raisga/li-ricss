@@ -10,7 +10,7 @@ const MemoizedReactMarkdown: FC<Options> = memo(
     prevProps.className === nextProps.className,
 );
 
-export default function Markdown({ content }: { content: string }) {
+function MarkdownParser({ content }: { content: string }) {
   return (
     <MemoizedReactMarkdown
       className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 break-words"
@@ -45,3 +45,5 @@ export default function Markdown({ content }: { content: string }) {
     </MemoizedReactMarkdown>
   );
 }
+
+export default MarkdownParser;

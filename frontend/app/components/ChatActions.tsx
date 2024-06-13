@@ -1,5 +1,5 @@
 import { PauseCircle, RefreshCw } from "lucide-react";
-import { Button } from "../button";
+import { Button } from "./Button";
 import { IChatHandler } from "@/app/lib/interfaces";
 
 export type Props = 

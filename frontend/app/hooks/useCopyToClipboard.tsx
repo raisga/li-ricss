@@ -6,9 +6,7 @@ export type Props = {
   timeout?: number;
 }
 
-export function useCopyToClipboard({
-  timeout = 2000,
-}: Props) {
+function useCopyToClipboard({ timeout = 2000 }: Props) {
   const [isCopied, setIsCopied] = React.useState<Boolean>(false);
 
   const copyToClipboard = (value: string) => {
@@ -31,3 +29,5 @@ export function useCopyToClipboard({
 
   return { isCopied, copyToClipboard };
 }
+
+export default useCopyToClipboard;

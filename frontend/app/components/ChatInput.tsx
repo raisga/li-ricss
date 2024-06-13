@@ -1,8 +1,8 @@
 import { MultiValue } from "react-select";
-import { Button } from "../button";
-import FileUploader from "../file-uploader";
-import { IChatHandler } from "../../lib/interfaces";
-import Selector from "../selector";
+import { Button } from "./Button";
+import FileUploader from "./FileUploader";
+import { IChatHandler } from "../lib/interfaces";
+import Selector from "./Selector";
 
 function ChatInput(
   props: Pick<

@@ -1,9 +1,9 @@
 import { Check, Copy } from "lucide-react";
 import { Message } from "ai";
-import { Button } from "../button";
-import ChatAvatar from "./chat-avatar";
-import Markdown from "../markdown";
-import { useCopyToClipboard } from "../../hooks/use-copy-to-clipboard";
+import { Button } from "./Button";
+import ChatAvatar from "./ChatAvatar";
+import Markdown from "./MarkdownParser";
+import useCopyToClipboard from "../hooks/useCopyToClipboard";
 
 function ChatMessage(chatMessage: Message) {
   const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
