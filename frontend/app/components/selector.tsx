@@ -9,7 +9,7 @@ export type Props = {
   placeholder?: string;
 }
 
-export function Selector({ onChange, options, placeholder}: Props) {
+function Selector({ onChange, options, placeholder}: Props) {
   return (
     <div className="flex-1">
       <Select

@@ -20,7 +20,7 @@ export interface FileUploaderProps {
 const DEFAULT_INPUT_ID = "fileInput";
 const DEFAULT_FILE_SIZE_LIMIT = 1024 * 1024 * 50; // 50 MB
 
-export default function FileUploader({
+function FileUploader({
   config,
   onFileUpload,
   onFileError,
@@ -113,3 +113,5 @@ export default function FileUploader({
     </div>
   );
 }
+
+export default FileUploader;

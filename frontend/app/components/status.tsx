@@ -5,7 +5,7 @@ export type Props = {
   data?: IEventData[];
 }
 
-export function Status({ data }: Props) {
+function Status({ data }: Props) {
   const iconSize = 18;
   const statusToIcon = {
     loading: <Loader2 className="" size={iconSize} />,

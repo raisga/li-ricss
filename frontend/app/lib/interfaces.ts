@@ -18,17 +18,6 @@ export interface IChatHandler {
   onFileError?: (errMsg: string) => void;
 }
 
-export interface IChatMessageImageData {
-  type: "image_url";
-  image_url: {
-    url: string;
-  };
-}
-
-export interface ILanguageMap {
-  [key: string]: string | undefined;
-}
-
 export interface IEventData {
   status: string;
   message: string;
