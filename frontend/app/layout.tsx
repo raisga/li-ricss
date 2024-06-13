@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "By raisga dev team.",
 };
 
-export default function RootLayout({
+function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -20,3 +20,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+export default RootLayout;
