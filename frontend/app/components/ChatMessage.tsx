@@ -1,9 +1,9 @@
 import { Check, Copy } from "lucide-react";
 import { Message } from "ai";
-import { Button } from "./Button";
-import ChatAvatar from "./ChatAvatar";
-import Markdown from "./MarkdownParser";
-import useCopyToClipboard from "../hooks/useCopyToClipboard";
+import Button from "@/app/components/Button";
+import ChatAvatar from "@/app/components/ChatAvatar";
+import MarkdownParser from "@/app/components/MarkdownParser";
+import useCopyToClipboard from "@/app/hooks/useCopyToClipboard";
 
 function ChatMessage(chatMessage: Message) {
   const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
@@ -16,7 +16,7 @@ function ChatMessage(chatMessage: Message) {
       <ChatAvatar role={chatMessage.role} />
       <div className="group flex flex-1 justify-between gap-2">
         <div className="flex-1 space-y-4">
-          <Markdown content={chatMessage.content} />
+          <MarkdownParser content={chatMessage.content} />
         </div>
         <Button
           onClick={onCopy}

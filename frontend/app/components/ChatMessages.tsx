@@ -1,9 +1,8 @@
-import { Loader2 } from "lucide-react";
 import { useEffect, useRef } from "react";
-
-import ChatActions from "./ChatActions";
-import ChatMessage from "./ChatMessage";
-import { IChatHandler } from "../lib/interfaces";
+import { Loader2 } from "lucide-react";
+import ChatActions from "@/app/components/ChatActions";
+import ChatMessage from "@/app/components/ChatMessage";
+import { IChatHandler } from "@/app/lib/interfaces";
 
 export default function ChatMessages(
   props: Pick<IChatHandler, "messages" | "isLoading" | "reload" | "stop">,

@@ -1,11 +1,11 @@
 "use client";
 
-import { useChat } from "ai/react";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
-import { insertDataIntoMessages } from "../lib/utils";
-import ChatInput from "./ChatInput";
-import ChatMessages from "./ChatMessages";
-import Status from "./Status";
+import { useChat } from "ai/react";
+import ChatInput from "@/app/components/ChatInput";
+import ChatMessages from "@/app/components/ChatMessages";
+import Status from "@/app/components/Status";
+import { insertDataIntoMessages } from "@/app/lib/utils";
 import { IEventData } from "@/app/lib/interfaces";
 
 const apiUrl = process.env.NEXT_BASEURL_API || 'http://localhost:8000/api/';

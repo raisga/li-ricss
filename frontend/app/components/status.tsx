@@ -1,5 +1,5 @@
 import { Loader2, CheckCircle } from "lucide-react";
-import { IEventData } from "../lib/interfaces";
+import { IEventData } from "@/app/lib/interfaces";
 
 export type Props = {
   data?: IEventData[];

@@ -1,11 +1,11 @@
 "use client";
 
-import { Loader2, Paperclip } from "lucide-react";
 import { ChangeEvent, useState } from "react";
-import { buttonVariants } from "./Button";
-import { cn } from "../lib/utils";
+import { Loader2, Paperclip } from "lucide-react";
+import { buttonVariants } from "@/app/components/Button";
+import { cn } from "@/app/lib/utils";
 
-export interface FileUploaderProps {
+export type Props = {
   config?: {
     inputId?: string;
     fileSizeLimit?: number;
@@ -24,7 +24,7 @@ function FileUploader({
   config,
   onFileUpload,
   onFileError,
-}: FileUploaderProps) {
+}: Props) {
   const [uploading, setUploading] = useState(false);
 
   const inputId = config?.inputId || DEFAULT_INPUT_ID;

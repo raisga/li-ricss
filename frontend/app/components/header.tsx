@@ -5,6 +5,7 @@ export type Props = {
 }
 
 function Header({ title }: Props) {
+  const logoText = 'LI-RICSS';
   return (
     <div className="z-10 max-w-5xl w-full items-center justify-between lg:flex">
       <h2 className="text-xl font-medium fixed left-0 top-0 flex w-full justify-center pb-6 pt-8 lg:static lg:w-auto lg:rounded-xl lg:p-4 p-6">
@@ -17,7 +18,9 @@ function Header({ title }: Props) {
           href="https://www.raisga.com/"
           className="flex items-center justify-center font-nunito text-lg font-bold gap-2"
         >
-          <span style={{ whiteSpace: "nowrap" }}>LI-RICSS</span>
+          <span style={{ whiteSpace: "nowrap" }}>
+            {logoText}
+          </span>
           <Image
             className="rounded-xl"
             src="/logo-sample.png"
