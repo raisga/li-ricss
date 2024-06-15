@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useMemo } from "react";
 import { useChat } from "ai/react";
 import ChatInput from "@/app/components/ChatInput";
 import ChatMessages from "@/app/components/ChatMessages";
@@ -8,10 +8,7 @@ import Status from "@/app/components/Status";
 import { insertDataIntoMessages } from "@/app/lib/utils";
 import { IEventData } from "@/app/lib/interfaces";
 
-const apiUrl = process.env.NEXT_BASEURL_API || 'http://localhost:8000/api/';
-
-export default function ChatSection() {
-  const [stage, setStage] = useState<'new' | 'chat'>('new');
+function ChatSection() {
   const {
     messages,
     input,
@@ -22,23 +19,19 @@ export default function ChatSection() {
     stop,
     data,
   } = useChat({
-    // api: process.env.NEXT_PUBLIC_CHAT_API,
+    // TODO: Fix env variables issue NextJS 
+    api: 'http://localhost:8000/api/chat',
     // api: `${process.env.NEXT_BASEURL_API}${process.env.NEXT_CHAT_ENDPOINT}`,
-    api: `${apiUrl}${stage}`,
     headers: {
       "Content-Type": "application/json", // using JSON because of vercel/ai 2.2.26
     },
   });
 
-  useEffect(() => {
-    if (stage !== 'chat' && messages.length > 0) {
-      setStage('chat');
-    }
-  }, [messages, stage]);
-
   const transformedMessages = useMemo(() => {
     return insertDataIntoMessages(messages, data);
   }, [messages, data]);
+
+  console.log({ messages, data });
 
   const handleSelectorChange = (optionsValues: string[]) => {
     const e = { target: { value: optionsValues.join(', ') } } as ChangeEvent<HTMLInputElement>;
@@ -48,7 +41,7 @@ export default function ChatSection() {
   return (
     <div className="flex gap-4 justify-center w-[90vw]">
       <div className="space-y-4 max-w-5xl w-full">
-        {transformedMessages?.length > 0 && (
+        {messages?.length > 0 && (
           <ChatMessages
             messages={transformedMessages}
             isLoading={isLoading}
@@ -56,11 +49,10 @@ export default function ChatSection() {
             stop={stop}
           />
         )}
-        {transformedMessages?.length === 0 && (
+        {messages?.length === 0 && (
           <ChatInput
             input={input}
             isLoading={isLoading}
-            stage={stage}
             handleSubmit={handleSubmit}
             handleInputChange={handleInputChange}
             handleSelectorChange={handleSelectorChange}
@@ -72,3 +64,5 @@ export default function ChatSection() {
     </div>
   );
 }
+
+export default ChatSection;

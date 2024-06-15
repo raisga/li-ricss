@@ -8,7 +8,6 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routers.chat import chat_router
-from app.api.routers.new import new_router
 from app.settings import init_settings
 
 
@@ -32,7 +31,6 @@ if environment == "dev":
     )
 
 app.include_router(chat_router, prefix="/api/chat")
-app.include_router(new_router, prefix="/api/new")
 
 
 if __name__ == "__main__":

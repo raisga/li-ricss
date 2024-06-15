@@ -18,7 +18,6 @@ function ChatInput(
     | "handleSelectorChange"
   > & {
     multiModal?: boolean;
-    stage?: 'new' | 'chat';
   },
 ) {
 
