@@ -1,3 +1,5 @@
+'use client';
+
 import { Check, Copy } from "lucide-react";
 import { Message } from "ai";
 import Button from "@/app/components/Button";

@@ -1,3 +1,5 @@
+'use client';
+
 import { Loader2, CheckCircle } from "lucide-react";
 import { IEventData } from "@/app/lib/interfaces";
 

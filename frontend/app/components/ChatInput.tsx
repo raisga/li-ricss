@@ -1,3 +1,5 @@
+'use client';
+
 import { MultiValue } from "react-select";
 import Button from "@/app/components/Button";
 import FileUploader from "@/app/components/FileUploader";

@@ -1,3 +1,5 @@
+'use client';
+
 import Select, { MultiValue, ActionMeta } from 'react-select';
 
 export type Props = {

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useChat } from "ai/react";
