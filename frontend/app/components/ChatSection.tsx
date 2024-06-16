@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useChat } from "ai/react";
 import ChatInput from "@/app/components/ChatInput";
 import ChatMessages from "@/app/components/ChatMessages";
-import Status from "@/app/components/Status";
+import DataStatus from "@/app/components/DataStatus";
 import { getLastStatusData, insertDataIntoMessages } from "@/app/lib/utils";
 import { IEventData } from "@/app/lib/interfaces";
 
@@ -66,7 +66,7 @@ function ChatSection() {
           />
         )}
       </div>
-      <Status data={statusData as unknown as IEventData[]} />
+      <DataStatus data={statusData as unknown as IEventData[]} />
     </div>
   );
 }

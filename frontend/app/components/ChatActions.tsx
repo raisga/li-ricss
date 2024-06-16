@@ -1,14 +1,14 @@
 'use client';
 
-import { PauseCircle, RefreshCw } from "lucide-react";
+import { PauseCircle, RefreshCw, Check, Copy } from "lucide-react";
 import Button from "@/app/components/Button";
 import { IChatHandler } from "@/app/lib/interfaces";
 
 export type Props = 
-  Pick<IChatHandler, "stop" | "reload"> 
-  & { showReload?: boolean; showStop?: boolean; }
+  Pick<IChatHandler, "stop" | "reload" | "copy"> 
+  & { showReload?: boolean; showStop?: boolean; isCopied? : boolean }
 
-function ChatActions({ stop, reload, showStop, showReload }: Props) {
+function ChatActions({ stop, reload, copy, showStop, showReload, isCopied }: Props) {
   const actions = [
     {
       isVisible: showStop,
@@ -21,6 +21,16 @@ function ChatActions({ stop, reload, showStop, showReload }: Props) {
       onClick: reload,
       label: 'Regenerate',
       icon: <RefreshCw className="mr-2 h-4 w-4" />,
+    },
+    {
+      isVisible: true,
+      onClick: copy,
+      label: 'Copy',
+      icon: isCopied ? (
+        <Check className="mr-2 h-4 w-4" />
+      ) : (
+        <Copy className="mr-2 h-4 w-4" />
+      )
     }
   ];
   return (

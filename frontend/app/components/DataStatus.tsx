@@ -7,13 +7,15 @@ export type Props = {
   data?: IEventData[];
 }
 
-function Status({ data }: Props) {
+function DataStatus({ data }: Props) {
   const iconSize = 18;
   const statusToIcon = {
     loading: <Loader2 className="" size={iconSize} />,
     done: <CheckCircle className="text-green-600" size={iconSize} />,
   };
-  if (!data) return;
+  if (!data) {
+    return;
+  }
   return (
     <div className="flex flex-col gap-5 items-start mt-2">
       {data.map((eventData, idx) => (
@@ -26,4 +28,4 @@ function Status({ data }: Props) {
   );
 };
 
-export default Status;
+export default DataStatus;

@@ -14,6 +14,7 @@ export interface IChatHandler {
   handleSelectorChange?: (optionsValue: string[]) => void;
   reload?: () => void;
   stop?: () => void;
+  copy?: () => void;
   onFileUpload?: (file: File) => Promise<void>;
   onFileError?: (errMsg: string) => void;
 }

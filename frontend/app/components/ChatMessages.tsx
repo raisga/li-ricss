@@ -5,11 +5,14 @@ import { Loader2 } from "lucide-react";
 import ChatActions from "@/app/components/ChatActions";
 import ChatMessage from "@/app/components/ChatMessage";
 import { IChatHandler } from "@/app/lib/interfaces";
+import useCopyToClipboard from "@/app/hooks/useCopyToClipboard";
 
-export default function ChatMessages(
+function ChatMessages(
   props: Pick<IChatHandler, "messages" | "isLoading" | "reload" | "stop">,
 ) {
   const scrollableChatContainerRef = useRef<HTMLDivElement>(null);
+  const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
+
   const messageLength = props.messages.length;
   const lastMessage = props.messages[messageLength - 1];
 
@@ -56,8 +59,13 @@ export default function ChatMessages(
           stop={props.stop}
           showReload={showReload}
           showStop={showStop}
+          // NOTE: type Boolean -> boolean
+          isCopied={!!isCopied}
+          copy={() => copyToClipboard(lastMessage?.content || '')}
         />
       </div>
     </div>
   );
 }
+
+export default ChatMessages;
