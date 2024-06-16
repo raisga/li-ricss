@@ -1,6 +1,7 @@
 import { JSONValue, Message } from "ai";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { IEventData } from "@/app/lib/interfaces";
 
 export const isValidMessageData = (rawData: JSONValue | undefined) => {
   if (!rawData || typeof rawData !== "object") return false;
@@ -23,4 +24,12 @@ export const insertDataIntoMessages = (
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+export function getLastStatusData(data: IEventData[] | undefined) {
+  const statusIndex = data?.map((d) => d.status).lastIndexOf('loading');
+  if (statusIndex === -1) {
+    return []
+  };
+  return data?.slice(statusIndex);
 }

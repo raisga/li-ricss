@@ -1,14 +1,15 @@
 'use client';
 
-import { ChangeEvent, useMemo } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useChat } from "ai/react";
 import ChatInput from "@/app/components/ChatInput";
 import ChatMessages from "@/app/components/ChatMessages";
 import Status from "@/app/components/Status";
-import { insertDataIntoMessages } from "@/app/lib/utils";
+import { getLastStatusData, insertDataIntoMessages } from "@/app/lib/utils";
 import { IEventData } from "@/app/lib/interfaces";
 
 function ChatSection() {
+  const [statusData, setStatusData] = useState<IEventData[]>();
   const {
     messages,
     input,
@@ -31,7 +32,12 @@ function ChatSection() {
     return insertDataIntoMessages(messages, data);
   }, [messages, data]);
 
-  console.log({ messages, data });
+  useEffect(() => {
+    if (data) {
+      const newStatusData = getLastStatusData(data as unknown as IEventData[]);
+      setStatusData(newStatusData);
+    }
+  }, [data]);
 
   const handleSelectorChange = (optionsValues: string[]) => {
     const e = { target: { value: optionsValues.join(', ') } } as ChangeEvent<HTMLInputElement>;
@@ -60,7 +66,7 @@ function ChatSection() {
           />
         )}
       </div>
-      <Status data={data as unknown as IEventData[]} />
+      <Status data={statusData as unknown as IEventData[]} />
     </div>
   );
 }
