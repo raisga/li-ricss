@@ -3,22 +3,24 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { IEventData } from "@/app/lib/interfaces";
 
-export const isValidMessageData = (rawData: JSONValue | undefined) => {
-  if (!rawData || typeof rawData !== "object") return false;
-  if (Object.keys(rawData).length === 0) return false;
-  return true;
+export const isValidMessageData = (rawData: JSONValue | undefined): boolean => {
+  return rawData !== undefined 
+    && rawData !== null 
+    && typeof rawData === "object" 
+    && !Array.isArray(rawData) 
+    && Object.keys(rawData).length > 0;
 };
 
 export const insertDataIntoMessages = (
   messages: Message[],
   data: JSONValue[] | undefined
-) => {
-  // console.log(data);
-  if (!data) return messages;
-  messages.forEach((message, i) => {
-    const rawData = data[i];
-    if (isValidMessageData(rawData)) message.data = rawData;
-  });
+): Message[] => {
+  if (data) {
+    messages?.forEach((message, i) => {
+      const rawData = data[i];
+      if (isValidMessageData(rawData)) message.data = rawData;
+    });
+  }
   return messages;
 };
 
