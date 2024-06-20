@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
-import { useChat } from "ai/react";
+import { Message, useChat } from "ai/react";
 import ChatInput from "@/app/components/ChatInput";
 import ChatMessages from "@/app/components/ChatMessages";
 import DataStatus from "@/app/components/DataStatus";
@@ -10,6 +10,7 @@ import { IEventData } from "@/app/lib/interfaces";
 
 function ChatSection() {
   const [statusData, setStatusData] = useState<IEventData[]>();
+  const [chatHistory, setChatHistory] = useState<Message[]>([]);
   const {
     messages,
     input,
@@ -26,6 +27,7 @@ function ChatSection() {
     headers: {
       "Content-Type": "application/json", // using JSON because of vercel/ai 2.2.26
     },
+    onFinish: (msg) => setChatHistory((hist) => [...hist, msg]),
   });
 
   const transformedMessages = useMemo(() => {
@@ -43,6 +45,8 @@ function ChatSection() {
     const e = { target: { value: optionsValues.join(', ') } } as ChangeEvent<HTMLInputElement>;
     handleInputChange(e);
   };
+
+  console.log({ chatHistory });
 
   return (
     <div className="flex gap-4 justify-center w-[90vw]">

@@ -1,5 +1,5 @@
-import Header from "@/app/components/Header";
-import ChatSection from "@/app/components/ChatSection";
+import Header from "@/app/containers/Header";
+import ChatSection from "@/app/containers/ChatSection";
 
 function Home() {
   const headerTitle = '(L)lama(I)ndex as a (R)hythmic (I)nsightful (C)reative (S)emantic (S)ystem';
