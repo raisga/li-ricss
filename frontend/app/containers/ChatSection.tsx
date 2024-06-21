@@ -7,6 +7,7 @@ import ChatMessages from "@/app/components/ChatMessages";
 import DataStatus from "@/app/components/DataStatus";
 import { getLastStatusData, insertDataIntoMessages } from "@/app/lib/utils";
 import { IEventData } from "@/app/lib/interfaces";
+import CollapsibleMessages from "@/app/components/CollapsibleMessages";
 
 function ChatSection() {
   const [statusData, setStatusData] = useState<IEventData[]>();
@@ -46,8 +47,6 @@ function ChatSection() {
     handleInputChange(e);
   };
 
-  console.log({ chatHistory });
-
   return (
     <div className="flex gap-4 justify-center w-[90vw]">
       <div className="space-y-4 max-w-5xl w-full">
@@ -68,6 +67,9 @@ function ChatSection() {
             handleSelectorChange={handleSelectorChange}
             multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}  
           />
+        )}
+        {chatHistory.length > 0 && (
+          <CollapsibleMessages messages={chatHistory}/>
         )}
       </div>
       <DataStatus data={statusData as unknown as IEventData[]} />
