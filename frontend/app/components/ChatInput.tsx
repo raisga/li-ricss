@@ -5,6 +5,7 @@ import Button from "@/app/components/Button";
 import FileUploader from "@/app/components/FileUploader";
 import Selector from "@/app/components/Selector";
 import { IChatHandler } from "@/app/lib/interfaces";
+import { themesOptions } from "../lib/constants";
 
 function ChatInput(
   props: Pick<
@@ -38,12 +39,7 @@ function ChatInput(
     props.handleSelectorChange?.(optionsValues);
   }
 
-  const defaultOptions = [
-    { value: 'time', label: 'Time' },
-    { value: 'nostalgia', label: 'Nostalgia' },
-    { value: 'moments', label: 'Moments' },
-  ];
-
+  const defaultOptions = themesOptions;
   const disabled = false; // !(selectedOptions.length > 0)
   const allowedExtensions = ['pdf', 'txt', 'md'];
   const buttonLabel = '📝 Generate Lyrics';
