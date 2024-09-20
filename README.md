@@ -13,13 +13,13 @@ We use Server-Sent Events which will be recieved by Vercel AI SDK on the fronten
 
 ### Videos
 
-[demo1](preview/demo1_init.mp4)
+https://github.com/user-attachments/assets/06b59ade-4952-4108-b61e-09e7c2ee1d0a
 
-[demo2](preview/demo2_gen-song.mp4)
+https://github.com/user-attachments/assets/52d8cc6e-e439-4320-a14f-18e3b59cc896
 
-[demo3](preview/demo3_regen-song.mp4)
+https://github.com/user-attachments/assets/6ed783d9-7660-4337-b72d-e77faf67706a
 
-[demo4](preview/demo4_copy.mp4)
+https://github.com/user-attachments/assets/0a6cfcd1-53ba-4714-927c-cd91613950af
 
 ### Mobile View
 
