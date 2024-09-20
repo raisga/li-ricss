@@ -82,8 +82,7 @@ function FileUploader({
       body: formData,
     });
     const result = await response.json();
-    console.log(result);
-
+    return result;
   };
 
   return (

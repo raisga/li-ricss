@@ -12,6 +12,7 @@ import CollapsibleMessages from "@/app/components/CollapsibleMessages";
 function ChatSection() {
   const [statusData, setStatusData] = useState<IEventData[]>();
   const [chatHistory, setChatHistory] = useState<Message[]>([]);
+  const [uploadedFile, setUploadedFile] = useState<File>();
   const {
     messages,
     input,
@@ -56,7 +57,11 @@ function ChatSection() {
       }
     });
     // reload();
-  }
+  };
+
+  const handleUploadFile = async (file: File) => {
+    setUploadedFile(file);
+  };
 
   return (
     <div className="flex gap-4 justify-center w-[90vw]">
@@ -68,8 +73,13 @@ function ChatSection() {
           handleInputChange={handleInputChange}
           handleSelectorChange={handleSelectorChange}
           multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}
+          isValid={input.length > 0 && uploadedFile !== undefined}
           isDisabled={isLoading}
+          onFileUpload={handleUploadFile}
         />
+        {uploadedFile && messages.length === 0 && (
+          <p>{uploadedFile.name}</p>
+        )}
         {messages?.length > 0 && (
           <ChatMessages
             messages={transformedMessages}

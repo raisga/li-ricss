@@ -20,6 +20,7 @@ function ChatInput(
   > & {
     multiModal?: boolean;
     isDisabled?: boolean;
+    isValid?: boolean;
   },
 ) {
 
@@ -66,7 +67,7 @@ function ChatInput(
           onFileUpload={handleUploadFile}
           onFileError={props.onFileError}
         />
-        <Button type="submit" disabled={props.isLoading}>
+        <Button type="submit" disabled={!props.isValid}>
           {buttonLabel}
         </Button>
       </div>
