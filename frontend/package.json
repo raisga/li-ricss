@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate": "node app/api/chat/engine/generate.mjs"
+    "generate": "node app/api/generate/engine/generate.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",

@@ -19,6 +19,7 @@ function ChatInput(
     | "handleSelectorChange"
   > & {
     multiModal?: boolean;
+    isDisabled?: boolean;
   },
 ) {
 
@@ -55,6 +56,7 @@ function ChatInput(
           onChange={handleOnChange}
           options={defaultOptions}
           placeholder={placeholderSelector}
+          disabled={props.isDisabled}
         />
         <FileUploader
           config={{

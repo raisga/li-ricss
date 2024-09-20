@@ -30,7 +30,7 @@ if environment == "dev":
         expose_headers=[ "X-Experimental-Stream-Data"],
     )
 
-app.include_router(chat_router, prefix="/api/chat")
+app.include_router(chat_router, prefix="/api/generate")
 
 
 if __name__ == "__main__":

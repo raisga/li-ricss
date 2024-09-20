@@ -18,13 +18,12 @@ function ChatSection() {
     isLoading,
     handleSubmit,
     handleInputChange,
-    reload,
+    // reload,
+    // setMessages,
     stop,
     data,
   } = useChat({
-    // TODO: Fix env variables issue NextJS 
-    api: 'http://localhost:8000/api/chat',
-    // api: `${process.env.NEXT_BASEURL_API}${process.env.NEXT_CHAT_ENDPOINT}`,
+    api: `${process.env.NEXT_PUBLIC_BASEURL_API}${process.env.NEXT_PUBLIC_CHAT_ENDPOINT}`,
     headers: {
       "Content-Type": "application/json", // using JSON because of vercel/ai 2.2.26
     },
@@ -47,25 +46,36 @@ function ChatSection() {
     handleInputChange(e);
   };
 
+  const handleReload = () => {
+    // setMessages([]);
+    handleSubmit({
+      preventDefault: () => {},
+      target: {
+        // @ts-ignore
+        value: input,
+      }
+    });
+    // reload();
+  }
+
   return (
     <div className="flex gap-4 justify-center w-[90vw]">
       <div className="space-y-4 max-w-5xl w-full">
+        <ChatInput
+          input={input}
+          isLoading={isLoading}
+          handleSubmit={handleSubmit}
+          handleInputChange={handleInputChange}
+          handleSelectorChange={handleSelectorChange}
+          multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}
+          isDisabled={isLoading}
+        />
         {messages?.length > 0 && (
           <ChatMessages
             messages={transformedMessages}
             isLoading={isLoading}
-            reload={reload}
+            reload={handleReload}
             stop={stop}
-          />
-        )}
-        {messages?.length === 0 && (
-          <ChatInput
-            input={input}
-            isLoading={isLoading}
-            handleSubmit={handleSubmit}
-            handleInputChange={handleInputChange}
-            handleSelectorChange={handleSelectorChange}
-            multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}  
           />
         )}
         {chatHistory.length > 0 && (

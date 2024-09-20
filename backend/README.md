@@ -31,15 +31,15 @@ Third, run the development server:
 python main.py
 ```
 
-Then call the API endpoint `/api/chat` to see the result:
+Then call the API endpoint `/api/generate` to see the result:
 
 ```
-curl --location 'localhost:8000/api/chat' \
+curl --location 'localhost:8000/api/generate' \
 --header 'Content-Type: application/json' \
 --data '{ "messages": [{ "role": "user", "content": "Hello" }] }'
 ```
 
-You can start editing the API by modifying `app/api/routers/chat.py`. The endpoint auto-updates as you save the file.
+You can start editing the API by modifying `app/api/routers/generate.py`. The endpoint auto-updates as you save the file.
 
 Open [http://localhost:8000/docs](http://localhost:8000/docs) with your browser to see the Swagger UI of the API.
 

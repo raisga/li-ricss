@@ -44,7 +44,7 @@ function ChatMessages(
         className="flex h-[50vh] flex-col gap-5 divide-y overflow-y-auto pb-4"
         ref={scrollableChatContainerRef}
       >
-        {props.messages.map((m) => (
+        {props.messages.map((m) => m.role !== 'user' && (
           <ChatMessage key={m.id} {...m} />
         ))}
         {isPending && (

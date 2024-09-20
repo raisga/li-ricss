@@ -9,19 +9,22 @@ export type Props = {
   ) => void;
   options: { value: string; label: string; }[];
   placeholder?: string;
+  disabled?: boolean;
 }
 
-function Selector({ onChange, options, placeholder}: Props) {
+function Selector({ onChange, options, placeholder, disabled = false }: Props) {
   return (
     <div className="flex-1">
       <Select
         isMulti
-        name="colors"
+        instanceId='selector'
+        name="selector"
         options={options}
         placeholder={placeholder}
         className="basic-multi-select"
         classNamePrefix="select"
         onChange={onChange}
+        isDisabled={disabled}
       />
     </div>
   )
