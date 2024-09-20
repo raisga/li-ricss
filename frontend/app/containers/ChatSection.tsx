@@ -19,8 +19,8 @@ function ChatSection() {
     isLoading,
     handleSubmit,
     handleInputChange,
-    // reload,
-    // setMessages,
+    reload,
+    setMessages,
     stop,
     data,
   } = useChat({
@@ -47,16 +47,15 @@ function ChatSection() {
     handleInputChange(e);
   };
 
+  // Edit the first message (user) and reload to generate a new response
   const handleReload = () => {
-    // setMessages([]);
-    handleSubmit({
-      preventDefault: () => {},
-      target: {
-        // @ts-ignore
-        value: input,
-      }
-    });
-    // reload();
+    if (messages.length === 2) {
+      setMessages([
+        {...messages[0], content: input },
+        messages[1]
+      ]);
+      reload();
+    }
   };
 
   const handleUploadFile = async (file: File) => {
@@ -64,7 +63,7 @@ function ChatSection() {
   };
 
   return (
-    <div className="flex gap-4 justify-center w-[90vw]">
+    <div className="flex flex-col md:flex-row gap-4 justify-center w-[90vw]">
       <div className="space-y-4 max-w-5xl w-full">
         <ChatInput
           input={input}
@@ -76,6 +75,7 @@ function ChatSection() {
           isValid={input.length > 0 && uploadedFile !== undefined}
           isDisabled={isLoading}
           onFileUpload={handleUploadFile}
+          isChatStarted={messages.length > 0}
         />
         {uploadedFile && messages.length === 0 && (
           <p>{uploadedFile.name}</p>

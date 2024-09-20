@@ -21,6 +21,7 @@ function ChatInput(
     multiModal?: boolean;
     isDisabled?: boolean;
     isValid?: boolean;
+    isChatStarted?: boolean;
   },
 ) {
 
@@ -59,17 +60,21 @@ function ChatInput(
           placeholder={placeholderSelector}
           disabled={props.isDisabled}
         />
-        <FileUploader
-          config={{
-            allowedExtensions,
-            disabled,
-          }}
-          onFileUpload={handleUploadFile}
-          onFileError={props.onFileError}
-        />
-        <Button type="submit" disabled={!props.isValid}>
-          {buttonLabel}
-        </Button>
+        {!props.isChatStarted && (
+          <>
+            <FileUploader
+              config={{
+                allowedExtensions,
+                disabled,
+              }}
+              onFileUpload={handleUploadFile}
+              onFileError={props.onFileError}
+            />
+            <Button type="submit" disabled={!props.isValid}>
+              {buttonLabel}
+            </Button>
+          </>
+        )}
       </div>
     </form>
   );
